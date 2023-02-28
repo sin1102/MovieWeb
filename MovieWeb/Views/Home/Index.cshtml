@@ -1,0 +1,118 @@
+﻿@model IEnumerable<MovieWeb.Models.Movie>
+@{
+    ViewBag.Title = "SinMovies";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+}
+
+@Html.Action("NewMovieSlide", "Home")
+
+<script src="~/Scripts/jquery.slidey.js"></script>
+<script src="~/Scripts/jquery.dotdotdot.min.js"></script>
+<script type="text/javascript">
+    $("#slidey").slidey({
+        interval: 8000,
+        listCount: 5,
+        autoplay: false,
+        showList: true
+    });
+    $(".slidey-list-description").dotdotdot();
+</script>
+<!-- //banner -->
+<!-- banner-bottom -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="w3_agile_banner_bottom_grid">
+            <div id="owl-demo" class="owl-carousel owl-theme">
+
+                @Html.Action("TopMovieSlide", "Home")
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- //banner-bottom -->
+<div class="general_social_icons">
+    <nav class="social">
+        <ul>
+            <li class="w3_twitter"><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
+            <li class="w3_facebook"><a href="#">Facebook <i class="fa fa-facebook"></i></a></li>
+            <li class="w3_g_plus"><a href="#">Google+ <i class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- general -->
+<div class="general">
+    <h4 class="latest-text w3_latest_text">Featured Movies</h4>
+    <div class="container">
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <div id="myTabContent" class="tab-content">
+
+                @Html.Action("FeaturedMovies", "Home")
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //general -->
+<!-- Latest-tv-series -->
+<div class="Latest-tv-series">
+    <h4 class="latest-text w3_latest_text w3_home_popular">Most Popular Movies</h4>
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+
+                    @Html.Action("MostPopularMovie", "Home")
+
+                </ul>
+            </div>
+        </section>
+
+        <!-- flexSlider -->
+        <link rel="stylesheet" href="~/Content/flexslider.css" type="text/css" media="screen" property="" />
+        <script defer src="~/Scripts/jquery.flexslider.js"></script>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function (slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
+        </script>
+        <!-- //flexSlider -->
+    </div>
+</div>
+<!-- pop-up-box -->
+<script src="~/Scripts/jquery.magnific-popup.js" type="text/javascript"></script>
+<!--//pop-up-box -->
+<div id="small-dialog" class="mfp-hide">
+    <iframe src="https://player.vimeo.com/video/164819130?title=0&byline=0"></iframe>
+</div>
+<div id="small-dialog1" class="mfp-hide">
+    <iframe src="https://player.vimeo.com/video/148284736"></iframe>
+</div>
+<div id="small-dialog2" class="mfp-hide">
+    <iframe src="https://player.vimeo.com/video/165197924?color=ffffff&title=0&byline=0&portrait=0"></iframe>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
+            type: 'inline',
+            fixedContentPos: false,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+
+    });
+</script>
+<!-- //Latest-tv-series -->

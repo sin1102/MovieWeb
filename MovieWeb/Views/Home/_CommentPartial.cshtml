@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MovieWeb.Models.Rating>
+
+@helper RenderComment(IEnumerable<MovieWeb.Models.Rating> comments)
+{
+    foreach (var comment in comments)
+    {
+
+        <li class="comment" data-id="@comment.RateID">
+            <div class="avatar">
+                <a href="javascript:void(0);">
+                    <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="55" height="55">
+                </a>
+            </div>
+            <div data-id="@comment.RateID" class="comment-body">
+                <header><a href="javascript:void(0);" class="userlink">@comment.UserID</a> - <span class="pubdate">posted @comment.DateSumitted</span></header>
+                <p>
+                    @comment.CommentTxt
+                </p>
+                <footer>
+                    <a class="reply-link" href="@comment.RateID">Reply</a>
+                </footer>
+            </div>
+
+            @{
+                var children = Model.Where(x => x.ParentId == comment.RateID).ToList();
+                if (children.Count() > 0)
+                {
+                    <ul data-parentid="@comment.RateID" class="replies">
+                        @RenderComment(children);
+                    </ul>
+                }
+            }
+
+        </li>
+
+    }
+
+}
+
+<div id="comment-section" class="row">
+    <div class="col-sm-7">
+        <ul class="comments">
+            @RenderComment(Model.Where(x => x.ParentId == 0))
+        </ul>
+    </div>
+
+</div>

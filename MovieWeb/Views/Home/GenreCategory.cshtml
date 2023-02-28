@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MovieWeb.Models.Genre>
+<li class="dropdown" style="border-width:0px 0.5px 0px 0px; border-style:solid; color:white">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genre <b class="caret"></b></a>
+
+    <ul class="dropdown-menu multi-column columns-3">
+        <li>
+            <div class="col-sm-4">
+                <ul class="multi-column-dropdown">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <a href="@Url.Action("PhimTheoTheLoai","Home",new { id = item.GenreID})">
+                                @item.GenreName
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>
+</li>
+
+<style>
+       .col-sm-4{
+           columns: 2;
+       }
+        .col-sm-4 ul li{
+           margin-right:15px;
+        }
+         
+</style>
+
+

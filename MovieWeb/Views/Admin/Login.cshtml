@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>SignIn</title>
+</head>
+
+<body class="u-body u-xl-mode" style="background-image: url('../../images/login_background.jpg');">
+    <header class="u-clearfix u-header u-header" id="sec-62f8">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        </div>
+    </header>
+    <table align="center">
+        <h2 style="text-align:center;margin-top:20%">SIGN IN</h2>
+        @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "u-clearfix u-form-custom-backend u-form-spacing-20 u-form-vertical u-inner-form", @style = "padding: 30px;" }))
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Username:</td>
+                <td>
+                    @Html.TextBox("UserName", "", new { @class = "u-grey-5 u-input u-input-rectangle u-input-1" })
+                    @ViewData["Loi1"]
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Password:</td>
+                <td>
+                    @Html.Password("Password", "", new { @class = "u-grey-5 u-input u-input-rectangle u-input-2" })
+                    @ViewData["Loi2"]
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td></td>
+                <td>
+                    <input type="submit" value="Sign In" class="u-form-control-hidden">
+                </td>
+            </tr>
+        }
+    </table>
+    @*<a href="@Url.Action("ForgotPassword","User")" class="u-border-active-palette-2-base u-border-hover-palette-1-base u-border-none u-btn u-button-style u-login-control u-login-forgot-password u-none u-text-grey-40 u-text-hover-palette-4-base u-btn-2">Forgot password?</a>
+        <a href="@Url.Action("SignUp","User")" class="u-border-active-palette-2-base u-border-hover-palette-1-base u-border-none u-btn u-button-style u-login-control u-login-create-account u-none u-text-grey-40 u-text-hover-palette-4-base u-btn-3">Don't have an account? Sign up now</a>*@
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿
+@{
+    int i = 1;
+}
+
+
+    <div class="agile-news-table">
+        <div class="w3ls-news-result">
+            <h4>Search Results : <span>@Model.Count</span></h4>
+        </div>
+        <table id="table-breakpoint">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Movie Name</th>
+                    <th>Year</th>
+                    <th>Country</th>
+                    <th>Genre</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@(i++)</td>
+                        <td class="w3-list-img"><a href="@Url.Action("Details", "Home", new { id = item.MovieID})"><img src="@item.MovieImage" style="width:50px;height:75px" alt="" /> <span>@item.MovieName</span></a></td>
+                        <td>@item.ReleaseDate.ToString().Split(' ')[0]</td>
+                        <td class="w3-list-info">@item.Country</td>
+                        <td class="w3-list-info">@item.GenreName</td>
+                        <td>7.0</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+
+

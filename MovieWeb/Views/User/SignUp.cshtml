@@ -1,0 +1,67 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>SignUp</title>
+
+    <link rel="stylesheet" href="~/Content/nicepage.css" media="screen">
+    <link rel="stylesheet" href="~/Content/Home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="~/Scripts/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="~/Scripts/nicepage.js" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+
+</head>
+<body class="u-body u-xl-mode" style="background-image: url('../../images/login_background.jpg');">
+    <table align="center">
+        <h2 style="text-align:center;margin-top:20%">SIGN UP</h2>
+        @using (Html.BeginForm("SignUp", "User", FormMethod.Post, new { @class = "u-clearfix u-form-custom-backend u-form-spacing-20 u-form-vertical u-inner-form", @style = "padding: 30px;" }))
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Email:</td>
+                <td>
+                    @Html.TextBox("Email", "", new { @class = "u-grey-5 u-input u-input-rectangle u-input-1" })
+                    <p style="color:red">@ViewBag.ThongBaoEmail</p>
+                    <p style="color:red">@ViewBag.ThongBaoEmailEmpty</p>
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Username:</td>
+                <td>
+                    @Html.TextBox("UserName", "", new { @class = "u-grey-5 u-input u-input-rectangle u-input-1" })
+                    <p style="color:red; margin-left:15px">@ViewBag.ThongBaoUsername</p>
+                    <p style="color:red; margin-left:15px">@ViewBag.ThongBaoUsernameEmpty</p>
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Password:</td>
+                <td>
+                    @Html.Password("Password", "", new { @class = "u-grey-5 u-input u-input-rectangle u-input-2" })
+                    <p style="color:red; margin-left:15px">@ViewBag.ThongBaoPasswordEmpty</p>
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Confirm Password:</td>
+                <td>
+                    @Html.Password("ConfirmPassword", "", new { @class = "u-grey-5 u-input u-input-rectangle u-input-2" })
+                    <p style="color:red; margin-left:15px">@ViewBag.ThongBaoPassword</p>
+                    <p style="color:red; margin-left:15px">@ViewBag.ThongBaoConfirmPasswordEmpty</p>
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td></td>
+                <td>
+                    <input type="submit" value="Sign Up" class="u-form-control-hidden">
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

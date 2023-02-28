@@ -1,0 +1,24 @@
+﻿<div class="single-grid-right">
+    @foreach (var item in Model)
+    {
+        <div class="single-right-grids">
+            <div class="col-md-4 single-right-grid-left">
+                <a href="@Url.Action("Details","Home",new {id = item.MovieID})"><img src="@item.MoviePicture" style="width:120px; height:170px; margin-bottom:10px" /></a>
+            </div>
+
+            <div class="col-md-8 single-right-grid-right">
+                <a href="@Url.Action("Details","Home",new {id = item.MovieID})" class="title"> @item.MovieName</a>
+                <p class="author"><a href="#" class="author"></a>@item.ActorName</p>
+
+                <ul class="w3l-ratings">
+                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    }
+</div>

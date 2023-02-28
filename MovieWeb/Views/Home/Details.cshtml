@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    String MovieName = "";
+    String Description = "";
+    String MovieImage = "";
+}
+
+<div class="single-page-agile-main">
+    <div class="container">
+        <!-- /w3l-medile-movies-grids -->
+        <div class="agileits-single-top">
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li class="active">Details</li>
+            </ol>
+        </div>
+        <div class="single-page-agile-info">
+            <!-- /movie-browse-agile -->
+            <div class="show-top-grids-w3lagile">
+                <div class="col-sm-8 single-left">
+                    <div class="song">
+                        <div class="song-info">
+
+                            <h2>@Model.MovieName</h2>      
+
+                            @*<p style="display:inline-block">@Model.GenreName</p>*@
+
+                            <ul class="w3l-ratings">
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                            </ul>
+                            <h4><a>Overview</a></h4>
+
+                            <p>@Model.Description</p>
+
+
+
+                        </div>
+                        <div class="video-grid-single-page-agileits">
+                            <div data-video="dLmKio67pVQ" id="video">
+
+                                <img src="@Model.MovieImage" alt="" class="img-responsive" style="width:745px;height:360px" />
+
+
+                            </div>
+
+                            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+                            <a href="@Url.Action("WatchMovie","Home", new { id = Model.MovieID})">
+                                <button type="button" class="play-button">
+                                    <span class="button_text">Watch Now</span>
+                                    <span class="button_icon">
+                                        <ion-icon name="play-circle-outline"></ion-icon>
+                                    </span>
+                                </button>
+                            </a>
+                            <style>
+                                .play-button {
+                                    margin-left: 40%;
+                                    margin-right: 50%;
+                                    display: inline-flex;
+                                    height: 50px;
+                                    width: 150px;
+                                    padding: 0;
+                                    background: #ff3131;
+                                    border: none;
+                                    outline: none;
+                                    border-radius: 5px;
+                                    overflow: hidden;
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                    cursor: pointer
+                                }
+
+                                    .play-button:hover {
+                                        background: #ff0000;
+                                    }
+
+                                .button_text {
+                                    color: white;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    margin-left: 20px;
+                                    height: 100%;
+                                }
+
+                                .button_icon {
+                                    color: white;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    margin-left: 10px;
+                                    height: 100%;
+                                    font-size: 30px;
+                                }
+                            </style>
+                            </a>
+                        </div>
+                    </div>
+
+                    @*<div class="all-comments">
+                            <div class="all-comments-info">
+                                <a href="#">Comments</a>
+                                <div class="agile-info-wthree-box">
+                                    @using (Html.BeginForm("Comment", "Home", FormMethod.Post))
+                                    {
+                                        <textarea placeholder="Message" required=""></textarea>
+                                        <input type="submit" value="SEND">
+                                        <div class="clearfix"> </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="media-grids">
+                                @Html.Action("Comment", "Home")
+                            </div>
+                        </div>*@
+                    <div class="row">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 class="page-title">User Comment</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="thumbnail">
+                                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <textarea cols="15" id="commentInput" class="form-control" placeholder="Join the conversation.."></textarea>
+                                        </div>
+                                        <div class="panel-heading comment-action">
+                                            <div class="submit-comment">
+                                                <a id="addNewCommentBtn" href="#">Submit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @Html.Action("CommentPartial", "Home", new { movieId = ViewBag.MovieId })
+
+                        </div>
+                    </div>
+
+
+                    <script id="comment-template" type="text/x-handlebars-template">
+                        <li class="comment" data-id="{{RateId}}">
+                            <div class="avatar">
+                                <a href="javascript:void(0);">
+                                    <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="55" height="55">
+                                </a>
+                            </div>
+                            <div class="comment-body">
+                                <header>
+                                    <a href="javascript:void(0);" class="userlink">{{UserId}}</a> - <span class="pubdate">
+                                        posted {{strDateSummited}}
+                                    </span>
+                                </header>
+                                <p>
+                                    {{CommentTxt}}
+                                </p>
+                                <footer>
+                                    <a class="reply-link" href="{{RateId}}">Reply</a>
+                                </footer>
+                            </div>
+
+                        </li>
+                    </script>
+
+                    <script id="reply-template" type="text/template">
+                        <div style="padding-top:10px" class="row reply-form">
+                            <div class="col-sm-2">
+                                <div class="thumbnail">
+                                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                </div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <textarea cols="15" id="replyInput" class="form-control" placeholder="Reply to conversation.."></textarea>
+                                    </div>
+                                    <div class="panel-heading comment-action">
+                                        <div class="submit-comment">
+                                            <a class="addReplyBtn" href="#">Submit</a>
+                                            <input type="hidden" name="hidParentId" class="hidParentId" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+                    <style>
+                    </style>
+
+
+                    @section scripts{
+                        <script src="~/Scripts/handlebars-v4.7.7.js"></script>
+                        <script>
+                            function addNewComment(data, @this.ViewBag.MovieId) {
+            return $.ajax({
+                type: 'POST',
+                url: '@Url.Action("addNewComment", "Home")',
+                data: data,
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8'
+            });
+        }
+    $(function () {
+        var source = document.getElementById("comment-template").innerHTML;
+        var template = Handlebars.compile(source);
+
+        $("#addNewCommentBtn").click(function (e) {
+            e.preventDefault();
+            var data = JSON.stringify({
+                ParentId: 0,
+                CommentTxt: $("#commentInput").val(),
+                UserId: 1
+            });
+
+            $.when(addNewComment(data)).then(function (response) {
+                if (response.error == false) {
+                    var $commentHtml = template(response.result);
+                    $(".comments").append($commentHtml);
+                    $("#commentInput").val('');
+                } else {
+                    console.log("An error has occured");
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        });
+        $(document).on("click", ".reply-link", function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            var $commentListItem = $self.parents(".comment-body");
+            var replySource = document.getElementById("reply-template").innerHTML;
+            $commentListItem.after(replySource);
+            $(document).find(".hidParentId").val($self.attr("href"));
+
+        });
+
+        $(document).on("click", ".addReplyBtn", function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            var $replyInput = $(document).find("#replyInput");
+            var ParentId = $(document).find(".hidParentId").val();
+            var $repliesUL = $(document).find("ul[data-parentid='" + ParentId + "']");
+            var $commentBody = $(document).find("[data-id='" + ParentId + "']");
+            var replyULCount = $repliesUL.length;
+
+            var data = JSON.stringify({
+                ParentId: parentId,
+                CommentTxt: $replyInput.val(),
+                UserId: 1
+            });
+            $.when(addNewComment(data)).then(function (response) {
+                if (response.error == false) {
+                    var commentHtml = template(response.result);
+
+                    if (replyULCount > 0) {
+
+                        $repliesUL.append(commentHtml);
+                    } else {
+
+                        $commentBody.append("<ul class='replies'></ul>")
+                            .append(commentHtml);
+                    }
+                    $(document).find(".reply-form").remove();
+
+                } else {
+                    console.log("An error has occured");
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+
+        });
+    });
+                        </script>
+
+
+                    }
+                </div>
+
+                <div class="col-md-4 single-right">
+                    <h3>Up Next</h3>
+                    <div class="single-grid-right">
+                        @Html.Action("UpNext", "Home")
+                    </div>
+                </div>
+                <!-- //movie-browse-agile -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MovieWeb.Models.Movie>
+
+@foreach (var item in Model)
+{
+    <div class="item">
+        <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+            <a href="@Url.Action("Details","Home",new { id = item.MovieID})" class="hvr-shutter-out-horizontal">
+                <img src="@item.MoviePicture" title="album-name" class="img-responsive" style="width:182px; height:268px; background-size:cover" />
+                <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+            </a>
+            <div class="mid-1 agileits_w3layouts_mid_1_home">
+                <div class="w3l-movie-text" style="overflow: hidden; text-overflow: ellipsis; line-height: 20px; -webkit-line-clamp: 1; display: -webkit-box; -webkit-box-orient: vertical">
+                    <h4>@item.MovieName</h4>
+                </div>
+                <div class="mid-2 agile_mid_2_home">
+                    <p>@item.ReleaseDate.ToString().Split(' ')[0]</p>
+                    <div class="block-stars">
+                        <ul class="w3l-ratings">
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="ribben">
+                <p>NEW</p>
+            </div>
+        </div>
+    </div>
+}

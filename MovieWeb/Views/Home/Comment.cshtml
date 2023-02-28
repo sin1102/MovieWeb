@@ -1,0 +1,18 @@
+﻿
+<div class="media-grids">
+    @foreach (var item in Model)
+    {
+        <div class="media">
+            <h5>@item.UserName</h5>
+            <div class="media-left">
+                <a href="#">
+                    <img src="~/images/user.jpg" title="Sin movies" alt=" " />
+                </a>
+            </div>
+            <div class="media-body">
+                <p>@item.Comment</p>
+                <span>Commented at :<a href="#"> @item.DateSumitted.ToString().Split(' ')[0]</a></span>
+            </div>
+        </div>
+    }
+</div>

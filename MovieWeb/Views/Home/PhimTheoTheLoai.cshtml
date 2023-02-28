@@ -1,0 +1,67 @@
+﻿@*@model IEnumerable<MovieWeb.Models.Movie>*@
+@{
+    ViewBag.Title = "GenreMovies";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@using MovieWeb.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Movie>
+
+<div class="general-agileits-w3l">
+    <div class="w3l-medile-movies-grids">
+        <div class="browse-agile-w3ls general-w3ls">
+            <div class="tittle-head">
+                <h4 class="latest-text">Genre Movies </h4>
+                <div class="container">
+                    <div class="agileits-single-top">
+                        <ol class="breadcrumb">
+                            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                            <li class="active">Genre</li>
+                            <li class="active">@ViewBag.GenreName</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="browse-inner">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-2 w3l-movie-gride-agile">
+                            <a href="@Url.Action("Details","Home",new { id = item.MovieID})">
+                                <img src="@item.MoviePicture" alt="@item.MovieName" width="182" height="268" />
+                                <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+                            </a>
+                            <div class="mid-1">
+                                <div class="w3l-movie-text">
+                                    <h5 style="overflow: hidden; text-overflow: ellipsis; line-height: 20px; -webkit-line-clamp: 1; display: -webkit-box; -webkit-box-orient: vertical">
+                                        @item.MovieName
+                                    </h5>
+                                </div>
+                                <div class="mid-2">
+                                    <p>@item.ReleaseDate.ToString().Split(' ')[0]</p>
+                                    <div class="block-stars">
+                                        <ul class="w3l-ratings">
+                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="blog-pagenat-wthree">
+                <div class="pagination">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("PhimTheoTheLoai", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

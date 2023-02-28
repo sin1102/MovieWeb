@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MovieWeb.Models.Movie>
+
+<div id="slidey" style="display:none;">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                    <img src="@item.MovieImage">
+                    <p class='title'>@item.MovieName</p><p class='description'> @item.Description</p>
+            </li>
+        }
+    </ul>
+</div>

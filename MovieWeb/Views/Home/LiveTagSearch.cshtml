@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MovieWeb.Models.Movie>
+@foreach (var item in Model)
+{
+    <div class="search-tag" id="@item.MovieID">
+        <img src="@item.MoviePicture" style="width:40px; height:60px" />
+        <div class="search-tag-detail" style="inline-size:315px">
+            <a href="@Url.Action("Details","Home", new {id = item.MovieID})">@item.MovieName</a>
+        </div>
+
+    </div>
+
+}
+
+@if (@Model.Count() != 0)
+{
+    <div class="see-more">
+        <button type="button" class="see-more-button">
+            <span class="button_icon">
+                <ion-icon name="arrow-forward-outline" style="margin-top:3.5px"></ion-icon>
+            </span>
+            <span class="button_text">See more</span>
+        </button>
+    </div>
+}
+
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<style>
+    .see-more-button {
+        display: inline-flex;
+        height: 40px;
+        width: 355px;
+        padding: 0;
+        background: #ff0000;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer
+    }
+
+
+    .button_text {
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        margin-left: 30%;
+        height: 100%;
+    }
+
+    .button_icon {
+        color: white;
+        background: #9b0000;
+        display: inline-block;
+        width: 50px;
+        height: 100%;
+        font-size: 30px;
+    }
+</style>
